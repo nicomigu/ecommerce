@@ -1,0 +1,16 @@
+jwt:
+  secret-key: your_secret_key_hereEQeU2NFEoKwWTKB6ruBs3Kt43yoaBsnb8kDf9BCY2h2oWftZ9ZZ5sTAk25QkhSGFg5kaHLCa8nzNNXfaDqSHd4WQUrrmoFgTr9DparBRKSTnmrBQWzEq68ceuNFU8YbnGDsPUwK8mEZWdQ4mDJM2MZGPRnSNd8rCEdj6Df6ruy9tkSFXG3cAaEGpZMkCQjEj5bHbTFKDeRZ3xM4SCmSQEgdX8dk9T3B6jP9L4o72D3BTF23WxXMPtoo8kchxRqu5Xd6UB3a8B5SjBUXmSBs6xSTEKc7pBaYmzzxLrQLRRYUpSsJyGqTeMHSyHkn4mZ77EtdkPojAmNHUxMZfSeswQBDCoGea6odUSTTFKCaJsw6rkzgZLTnru2hxRpKaR7wGexm6MFDqXjSwFyNr6W3hz6PptqsMwz3fjmZoEpEQjRKTb6cs6G3yS5yxfcUyTtBSzw39SjEdNuFaKKWr9w39Y8hZFR8ju67p57dNdZzY6fJsHPGU5guMhoL7jtzhLeGD
+  expiration:
+    time: 86400000  # 24 hours in milliseconds
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/auth/**
